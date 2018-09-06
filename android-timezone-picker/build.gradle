@@ -1,21 +1,9 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.+'
-    }
-}
-
 apply plugin: 'com.android.library'
-apply plugin: 'android-maven'
 
 version = "1.0.0"
-group = "com.connectsdesign"
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.0"
+    compileSdkVersion 27
 
     sourceSets {
         main {
@@ -42,8 +30,8 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 21
+        minSdkVersion 21
+        targetSdkVersion 27
         versionCode 1
         versionName version
     }
@@ -52,6 +40,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    ext {
+        supportLibraryVersion = '27.1.1'
+        playServicesVersion = '15.0.1' // always stay a few months behind to make sure people have updated
+    }
+
+    dependencies {
+        implementation "com.android.support:support-v4:$supportLibraryVersion"
     }
 }
 
